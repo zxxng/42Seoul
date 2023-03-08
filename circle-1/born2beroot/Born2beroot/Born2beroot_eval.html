@@ -1,0 +1,762 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Born2beroot</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f68c0fe5-583f-45b3-9756-26d2bc352276" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✔️</span></div><h1 class="page-title">Born2beroot</h1></header><div class="page-body"><figure id="3af837bc-0ecf-4131-ba03-d6b790090d16"><div class="source"><a href="Born2beroot%20f68c0fe5583f45b3975626d2bc352276/en.subject.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9705163b-9e68-4b56-a182-fc6f931bbf55/en.subject.pdf</a></div></figure><p id="a9e33ee0-0108-414c-9ba8-68a19cf99740" class=""><code><a href="https://github.com/42seoul-translation/subject_ko/blob/master/born2beroot/born2beroot.md">한국어 PDF 번역본 github</a></code></p><p id="859ffd66-f9fd-42d5-a7d6-34df120f8a46" class="">
+</p><ul id="74075780-5edb-497b-8430-400043da1d8f" class="toggle"><li><details open=""><summary><mark class="highlight-gray">평가 준비사항</mark></summary><ul id="3bc73b89-f0a5-43cd-8fe2-4179e831b0ba" class="bulleted-list"><li style="list-style-type:disc">새 사용자 생성 후 그룹 추가</li></ul><ul id="6ee2ed9e-507d-49e0-8f7d-e466a123d7f6" class="bulleted-list"><li style="list-style-type:disc">암호 정책의 장단점</li></ul><ul id="ab089780-bc60-478a-b67e-26f6443ea481" class="bulleted-list"><li style="list-style-type:disc">호스트 이름 수정 후 다시 시작 → 원래대로 복원 </li></ul><ul id="34a570a8-0122-4621-8bc5-ccc2cc4b52f2" class="bulleted-list"><li style="list-style-type:disc">파티션 보는 방법 설명 → 서브젝트와 비교</li></ul><ul id="ff11bc16-cb7a-4665-922a-daca9ea73753" class="bulleted-list"><li style="list-style-type:disc">LVM 작동. 무엇에 관한 것인지</li></ul><ul id="440f76b3-325f-43dc-9772-c36260685891" class="bulleted-list"><li style="list-style-type:disc">수도 설치확인, 사용자 할당, sudo 설명 /var/log/sudo 업데이트 확인</li></ul><ul id="e02109b2-2ea7-47db-972a-67ee0c7060b1" class="bulleted-list"><li style="list-style-type:disc">ufw/방화벽, 포트 8080 열기</li></ul><ul id="68b067d9-6685-470b-af66-7ac33f35c125" class="bulleted-list"><li style="list-style-type:disc">ssh 설치 확인, 포트 4242에서만 되는지, 루트 로그인 불가 확인</li></ul><ul id="c975151d-aa56-4a95-9aba-56cb8e80640f" class="bulleted-list"><li style="list-style-type:disc">스크립트 . 크론이 무엇인지? 10분마다 반복을 하는지</li></ul><p id="090a058e-62a0-4a0c-9f03-a6261df46fd8" class="">→ <code>chage -M 30 root</code></p><p id="e12c49e7-851c-4bce-95a3-a9f12129afc7" class="">→ <code>chage -m 2 root</code></p><p id="39d5be48-cc99-4033-9c59-365c4f27d7c9" class="">⇒ <code>chage -l root</code></p></details></li></ul><ul id="179c28d9-608f-4d93-8381-a5e0fe7abd8d" class="toggle"><li><details open=""><summary>평가 중 사용 명령어 </summary><ul id="32158257-47e2-4ddc-bdb9-68c600b6bc81" class="bulleted-list"><li style="list-style-type:disc">OS 가 Debian인가?</li></ul><pre id="493dd552-831c-45b6-a27e-95a4caaa86d7" class="code"><code>$ cat /etc/os-release</code></pre><ul id="50a7840d-c5a3-45a2-9975-a19e4d809dd3" class="bulleted-list"><li style="list-style-type:disc">새 유저 생성 및 password 정책 설명 / evaluating 그룹 생성 및 유저 추가</li></ul><pre id="f555ba87-205b-4923-bea8-f6235e3dd017" class="code"><code>$ sudo adduser &lt;NEW_USER&gt;
+$ sudo groupadd evaluating
+$ sudo usermod -aG evaluating &lt;NEW_USER&gt;</code></pre><ul id="a59fd4bc-fa6b-45ea-9c88-9484b56fd566" class="bulleted-list"><li style="list-style-type:disc">hostname 확인 및 restart</li></ul><pre id="1b148162-d3c6-4d73-bf78-9298c9640c25" class="code"><code>$ sudo hostnamectl set-hostname &lt;HOST_NAME&gt;
+$ sudo reboot</code></pre><p id="59a921c5-78bb-4ec8-88ea-ab0a062d1d61" class="">
+</p></details></li></ul><h3 id="28206dfb-7580-4bb9-a016-0202af2056d0" class="">가상머신의 작동방식</h3><ul id="c71bc5bf-6e2e-403c-8b97-e50070988411" class="bulleted-list"><li style="list-style-type:disc"> 물리적으로 우리가 사용하는 컴퓨터가 아닌 다른 컴퓨터를 만들어내는 <mark class="highlight-orange"><strong>가상의 컴퓨터</strong></mark>를 의미 == 에뮬레이션<p id="6b4c0abd-426a-47dc-a161-22f2a367a03c" class="">⇒ 소프트웨어가 가상머신이 제공하는 환경과 자원에 제한을 받으며 우리가 만든 가상세계를 벗어날 수 없다.</p><p id="735faaf4-9976-483e-9b79-38db5425f4d0" class="">⇒ 가상머신을 사용하려면 나름 고급 하드웨어가 있어야 하고 그렇지 못하면 상대적으로 매우 느리게 실행되므로 잘 사용하지 않음</p></li></ul><ul id="34fd7574-b8d0-4f43-b3e0-a702c895addc" class="bulleted-list"><li style="list-style-type:disc">가상머신의 목적?<p id="f54fb311-0104-47c7-8509-7c23722780cf" class="">⇒ <mark class="highlight-orange"><strong>동시에 여러 운영체제를 설치하고 실행</strong></mark>하기 위해 컴퓨터 메모리를 분할하여 단일 컴퓨터에 여러 개의 격리된 동일한 실행환경을 생성</p><ol type="1" id="38616c48-bcdb-4d2a-9bb5-19870bd9cd94" class="numbered-list" start="1"><li>하나의 컴퓨터로 서로 다른 두 개 이상의 운영체제를 실행하고자 할 때</li></ol><ol type="1" id="60a3638e-f85c-4b54-8fe2-d163499157ef" class="numbered-list" start="2"><li>하나의 컴퓨터 자원을 여러 사용자에게 나누어 주는 상황에서 상호 간섭을 없애고 싶을 때  ex) 클라우드 가상머신</li></ol><ol type="1" id="2c757ac8-e504-4848-9f4c-ff7eb398d10d" class="numbered-list" start="3"><li>컴퓨터의 다른 부분에 영향을 주지 않는 독립 환경을 만들고 싶을 때   ex) 악성코드 분석시 활용</li></ol><p id="1f9fc6c6-61fa-405a-b1aa-2662b165d3cb" class=""><code>host</code> : 실제로 사용하는 컴퓨터   <code>guest</code> : 가상환경에서 설정한 컴퓨터</p><p id="eb252ecb-2d47-4588-a5c4-ad49eb7a2c72" class="">
+</p></li></ul><h3 id="6a5fb867-9c73-40d9-8816-cbbee424cfcd" class="">Rocky와 Debian 의 차이점</h3><ul id="9c768060-0bad-4a3c-a93e-57e002adcb41" class="toggle"><li><details open=""><summary>Debian</summary><p id="e5265eb5-77f5-41ad-8df7-c51176cbb3ea" class="">⇒ 데비안 프로젝트가 개발한 자유(무료) 컴퓨터 운영체제</p><p id="3ef29d0e-187a-42cf-b770-2a3b863c82f4" class="">⇒ 다양한 패키지가 존재함</p><p id="dfba85b8-f7da-479b-90a3-69ca8a9176e7" class="">⇒ 버전 주기, 릴리즈가 빠르고 자주 있는 편. 시스템 안정화까지 시간이 걸려 상용화 서버로는 선호되지 않음</p><p id="6893d7e6-72f3-49bb-bb8a-fd511750a169" class="">⇒ 패키지 설치 및 안정화된 버전간의 업그레이드가 쉽다.</p><p id="65f91603-0029-4039-8252-777b59ce9a4f" class="">⇒ 데스크톱 친화적 GUI가 있음</p></details></li></ul><ul id="76670e29-d7df-4ea4-8f26-cc0ba0c5d7b8" class="toggle"><li><details open=""><summary>Rocky</summary><p id="f12c95a9-391f-4eb2-b1ca-3e9e22a131a5" class="">⇒ 레드헷 (Red Hat) 계열 → 기업용서버 os (상용화)</p><p id="99a88839-9769-4383-a7be-17e1555fc384" class="">⇒ CentOS 업그레이드 버전</p><p id="2e8fc6dd-327e-4ae3-8ce0-ab0ab32b71c8" class="">⇒ 버전 주기가 긴 편. 시스템이 안정적이고 보안이슈, 버그가 아니면 업데이트 안함</p><p id="870c2ea5-e746-4e1f-9ac5-c5e7c470dcce" class="">⇒ 업그레이드가 어려운 편.  (업그레이드 보다는 새 버전을 설치하는걸 공식사이트도 권장함)</p><p id="a6071f85-1714-4666-b796-b9b6fb186bfa" class="">⇒ 간단한 GUI가 없음.</p></details></li></ul><p id="0b6ea406-5adf-4ba8-a248-ea50f30e2cc5" class="">
+</p><h3 id="72249bf9-0c58-4ba0-9f66-afcfdc10f60b" class="">apt와 aptitude 의 차이점과 APPArmor</h3><ul id="fe7302cc-d1e4-425e-a14f-7d5b002acf81" class="bulleted-list"><li style="list-style-type:disc"><code>apt</code> : 소프트웨어의 설치과 제거를 처리하는 소프트웨어. 그래픽 인터페이스 (GUI) 없이 명령어로 사용</li></ul><ul id="0b8282bb-6ef7-4ba6-8534-fcf39726b653" class="bulleted-list"><li style="list-style-type:disc"><code>aptitude</code> : 사용자 인터페이스를 추가해 사용자가 대화형으로 패키지를 검색하고 설치 제거 할 수 있는 패키징  (apt의 프론트엔드 프로그램)</li></ul><ul id="d9899874-3ef8-4388-a13d-64698969b250" class="bulleted-list"><li style="list-style-type:disc"><code>APPArmor</code> : 시스템 관리자가 프로그램 프로필 별로 프로그램의 역량을 제한할 수 있게 해주는 리눅스 커널 보안모듈</li></ul><p id="fe93a016-80e7-46ee-86f6-4567b7bc0f3f" class="">
+</p><h3 id="1c2a0c64-a653-4c61-883d-ead55355036f" class="">파티션</h3><ul id="d51963d9-b641-4a9e-9b1f-dff56391c77d" class="bulleted-list"><li style="list-style-type:disc"><code>lsblk</code> : 리눅스 디바이스 정보 출력 ⇒ 파티션 확인 가능</li></ul><ul id="1545cdff-eb6d-4025-8983-d73bbf5cb013" class="bulleted-list"><li style="list-style-type:disc">파티션을 왜할까?<p id="212b7bc6-fcd2-4296-ad27-8ace7cccf731" class="">⇒ 일반적으로 하드웨어는 운영체제를 실행하는데 사용되는데 가상머신을 이용할 때는 기본운영 체제 내에서 두번째 운영체제를 사용.<div class="indented"><p id="e56233a5-561b-460c-8212-dd8c6d8ff84a" class="">이 때, 하드웨어 둘 사이에서 분할해야하기 때문에 사용!</p></div></p></li></ul><p id="0bc4eedc-1629-44d0-9af6-b59480c854b1" class="">
+</p><h3 id="f0f75bf5-2c2d-4ffc-af73-24c0a477e361" class="">LVM (Logical volume manager)</h3><ul id="0c3342a3-0a9e-4b15-9e65-4d3e2b964401" class="bulleted-list"><li style="list-style-type:disc">논리적 공간을 관리해주는 프로그램</li></ul><ul id="95b1dbe6-0aa0-43a2-9e23-528ca2ac476f" class="bulleted-list"><li style="list-style-type:disc">디스크나 대용량 스토리지 장치를 유연하고 확장이 가능하게 다룰 수 있는 기술</li></ul><ul id="2d17ea20-fc00-4b0c-81a7-5557e2106dbe" class="toggle"><li><details open=""><summary>LVM 의 장점</summary><ol type="1" id="b991989d-e34a-44d5-8e1c-d4a967ff1b66" class="numbered-list" start="1"><li>여러개의 <mark class="highlight-orange"><strong>디스크 공간을 합쳐 하나처럼 사용</strong></mark>할 수 있다.</li></ol><ol type="1" id="26bbdd1c-b07b-413e-8c86-b098830b94cd" class="numbered-list" start="2"><li>사용하기 애매한 공간의 디스크 파티션을 활용할 수 있다.</li></ol><ol type="1" id="1835c163-c425-40e7-b6c0-b6b6af498f21" class="numbered-list" start="3"><li>기존에 사용중인 디스크의 공간을 <mark class="highlight-orange"><strong>유연하게 사용</strong></mark>할 수 있다.</li></ol></details></li></ul><ul id="b189534e-7cf8-47fe-937a-1662518f3fbf" class="toggle"><li><details open=""><summary>LVM과 파티션의 차이점</summary><ul id="36512cde-6860-4af6-bbe4-cb9d97c68b49" class="bulleted-list"><li style="list-style-type:disc">LVM은 파티션 대신 볼륨이라는 단위로 저장장치를 다룸</li></ul><ul id="981363b4-c700-48a6-96d4-938ab1ebf5d1" class="bulleted-list"><li style="list-style-type:disc">물리 디스크를 볼륨 그룹으로 묶고, 이걸 논리 볼륨으로 분할해서 관리</li></ul><ul id="e2af9957-f882-4869-b987-faf3835ec779" class="bulleted-list"><li style="list-style-type:disc">스토리지 확장, 변경시 서비스 변경을 할 수 있고, 스토리지 확장에 유연하게 대응할 수 있음</li></ul></details></li></ul><p id="5830a5ab-a45c-4cbc-a8d4-bc6f3ac3d25b" class="">
+</p><h3 id="91304ae2-5987-44ea-9578-ce7212f174fc" class="">Sudo</h3><pre id="c02b9817-2b42-4d9a-bddb-703db89e71fa" class="code"><code>cd /var/log/sudo/00/00</code></pre><ul id="5b03ef40-ba54-4f7e-bad1-5f2eb369031d" class="toggle"><li><details open=""><summary>Superuser do</summary><ul id="1e9ac3ef-8171-4138-a0d6-0ca202feb264" class="bulleted-list"><li style="list-style-type:disc"><code>sudo (명령어)</code> 일반 사용자가 root 권한을 빌려 명령 실행</li></ul><ul id="dc31ab23-6648-476a-bdcb-2b6e5c128b05" class="bulleted-list"><li style="list-style-type:disc"><code>su (계정명)</code> 현재 사용자를 로그아웃 하지 않는 상태에서 다른 사용자의 계정으로 전환하는 명령어</li></ul><ul id="dbbab103-cfcf-4e83-8b9d-8e572ecc53c7" class="bulleted-list"><li style="list-style-type:disc"><code>su - (계정명)</code> 다른 사용자의 계정으로 완전히 전환하고, 전환한 사용자의 환경설정을 불러오는 명령어<p id="646a3a72-124e-407b-8f8d-cecabec0f620" class="">⇒ root는 무한대의 권한을 가지고 있는데 root 권한을 아무나 가지고 있느면 침입자들이 마음대로 바꿀 수 있게 됨</p><p id="086ba34d-bb69-4364-8b3a-d8cef7973b67" class="">⇒ root의 권한은 시스템 관리자, 시스템 커널자체, 서비스 데몬의 3가지 경우로 한정 지어놓아야 함</p><p id="b4db1fc7-a61d-4f9a-a53d-f97b5988b353" class="">데몬? == 멀티태스킹 운영 체제에서 사용자가 직접적으로 제어하지 않고, <strong>백그라운드에서 돌면서 여러 작업을 하는 프로그램</strong>
+시스템 로그를 남기는 syslogd처럼 보통 데몬을 뜻하는 ‘d’를 이름 끝에 달고 있으며, 일반적으로 프로세스로 실행된다.</p></li></ul></details></li></ul><pre id="42a14525-2e7b-44f1-a732-3d7ae88686c9" class="code"><code>$ sudo --version
+$ sudo usermod -aG sudo &lt;new_user&gt;</code></pre><ul id="b2eb8a98-09ec-4cdd-81a6-13627078cbbd" class="toggle"><li><details open=""><summary>su 대신 sudo의 장점</summary><ul id="c2f26a8e-5335-4ffc-b80e-a09bc4b6b66e" class="bulleted-list"><li style="list-style-type:disc">root password를 효율적으로 관리할 수 있다.</li></ul><ul id="e566ab14-2a28-49d4-ab97-c1ede00001fd" class="bulleted-list"><li style="list-style-type:disc">root가 시스템상에서 작업하는 시간이 짧아야 한다.</li></ul><ul id="4d96a2b6-d9cd-4d36-8354-2017838e6573" class="bulleted-list"><li style="list-style-type:disc"> log 추적이 쉬워진다 (su root 사용시 로그 확인이 안된다)</li></ul><ul id="6e640900-8035-4945-988c-ce7992da2dab" class="bulleted-list"><li style="list-style-type:disc">침입자를 탐지할 수 있다. (시스템 침입자는 sudo를 사용할 수 없다.)</li></ul></details></li></ul><p id="f177a0ee-b547-4e8b-bd2e-fc14d3c7387d" class="">
+</p><h3 id="4ecb0f99-a5a7-4ec4-9241-dc0d067eab1a" class="">UFW/SSH</h3><pre id="115455ac-8728-4989-a805-8790943b6bbb" class="code"><code>$ sudo ufw status
+$ systemctl status ssh</code></pre><ul id="46335d0c-4e3a-4a72-8c53-3d3bb685f614" class="toggle"><li><details open=""><summary>UFW (Uncomplicated Firewall - 방화벽)</summary><pre id="238761fe-1e76-4065-b871-65c77a0e7258" class="code"><code>미리 정의된 보안 규칙에 기반한, 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템</code></pre><p id="3ffc6bc6-9309-4813-a134-3638cf447c86" class="">일반적으로 신뢰할 수 있는 내부 네트워크, 신뢰할 수 없는 외부 네트워크(예: 인터넷) 간의 장벽을 구성</p><p id="c5f26cb9-3875-4337-8cfa-78817880abf0" class="">프레임워크를 관리 및 조작하기 용이하기 위해 사용</p><ul id="32ed1fae-4218-45d3-a29e-c951ad821d58" class="bulleted-list"><li style="list-style-type:disc"><code>sudo apt install ufw</code> 명령어로 설치</li></ul><pre id="d8e467c3-67d4-4eac-8c1b-d841b995b630" class="code"><code>$ sudo ufw allow 8080
+$ sudo cat /etc/ufw/user.rules
+# 삭제
+$ sudo ufw delete allow 8080</code></pre></details></li></ul><ul id="9f44de28-5305-4812-867d-91a196680f1a" class="toggle"><li><details open=""><summary>SSH (Secure Shell Protocol)</summary><p id="201a33a0-811b-44f3-a2ad-03e5c7b76ffa" class="">컴퓨터와 컴퓨터가 인터넷과 같은 Public Network를 통해 서로 통신을 할 때 보안적으로 안전하게 통신을 하기 위해 사용하는 프로토콜</p><p id="f73b09fd-53f6-4c03-9989-03673fed16f8" class=""><code>public key</code>와 <code>private key</code>를 만들어 public key를 통해 메세지를 전송하기전 암호화를 하고 private key 로 암호화된 메세지 복호화 가능</p><ul id="6006d352-3d88-46f5-97a6-121c4d97d873" class="bulleted-list"><li style="list-style-type:disc"><code>sudo nano /etc/ssh/sshd_config</code></li></ul><ul id="4a2cb209-2532-41a4-87da-ca398d02ebd2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray"><a href="https://www.notion.so/5806ee719d1c426c91d41f198a6fb09e">포트 포워딩 사용법</a></mark></li></ul><pre id="2b8dc2ac-c662-49e6-aca6-64d6a8afec48" class="code"><code>$ ssh jaeyyoo@192.168.68.1 -p 4242
+
+$ systemctl status sshd
+$ systemctl start sshd
+$ systemctl restart sshd</code></pre></details></li></ul><p id="a95b4638-79f5-403e-9a5f-ca28317302a2" class="">
+</p><h3 id="fdc84d7b-8fc9-4093-baf7-51e64ec73e60" class="">크론(cron) Command Run On (UNIX scheduler)</h3><pre id="56f19be5-9ade-49fc-80b6-4802f8cc8c63" class="code"><code>vi /root/monitoring.sh</code></pre><ul id="194f455c-66a1-4bb9-8071-d2250e63c1d6" class="bulleted-list"><li style="list-style-type:disc">정기적으로 작업을 처리하며 소프트웨어를 실행시키도록 시간 기반 잡 스케줄러 성격의 데몬 프로세스<p id="fd81d66d-8b79-412f-b9d4-cf2d417ddfc2" class="">⇒ 특정시간 or 특정시간마다 어떤 작업을 자동으로 수행하게 하는 명령어</p></li></ul><ul id="e6817e17-68f0-442b-a841-d59460be0b0d" class="toggle"><li><details open=""><summary>crontab</summary><ul id="094aee0f-51f9-4b2e-869e-160053fd119d" class="bulleted-list"><li style="list-style-type:disc">크론작업을 설정하는 파일 → <code>/etc/crontab</code>에 설정된 것을 읽어 작업을 수행<figure id="96d62f34-6f01-4dba-9000-fb88ac6299c8" class="image"><a href="Born2beroot%20f68c0fe5583f45b3975626d2bc352276/Screen_Shot_2023-01-26_at_3.38.48_PM.png"><img style="width:672px" src="Born2beroot%20f68c0fe5583f45b3975626d2bc352276/Screen_Shot_2023-01-26_at_3.38.48_PM.png"/></a></figure></li></ul></details></li></ul><ul id="c2801a3a-cc39-4c48-bec4-adbeb3862da3" class="toggle"><li><details open=""><summary>cron 명령어</summary><p id="9fd233c4-9f56-4e04-940d-298efff72ef2" class=""><code>sudo cat /etc/crontab</code></p><pre id="6b1d9c2c-f87b-4f5a-b77c-c4e0c8f4783e" class="code"><code># 크론 스크립트 실행 안되게
+$ sudo systemctl disable cron
+$ sudo reboot
+$ sudo service cron status
+# 다시 실행
+$ sudo systemctl enable cron
+
+# stop, start 같은 부가 명령어도 기억하기 !! =&gt; 1회성 명령어? 현업에서 자주 사용함!
+$ sudo systemctl stop cron
+$ sudo systemctl start cron</code></pre></details></li></ul><ul id="be57bbf1-18ee-4671-8fa5-c8041511204a" class="toggle"><li><details open=""><summary><code>monitoring.sh </code></summary><pre id="c7e1f05c-33fb-4b42-8ad5-bebc5df94872" class="code"><code># 운영체제와 커널의 버전에 대한 구조
+printf &quot;#Architecture: &quot;
+uname -a
+
+# 물리 프로세서들의 수
+printf &quot;#CPU physical : &quot;
+nproc --all
+
+# 가상 프로세서들의 수
+printf &quot;#vCPU : &quot;
+cat /proc/cpuinfo | grep processor | wc -l
+
+# 현재 서버에서 사용가능한 RAM과 백분율로 표현된 사용률
+printf &quot;#Memory Usage: &quot;
+free -m | grep Mem | awk &#x27;{printf&quot;%d/%dMB (%.2f%%)\n&quot;, $3, $2, $3/$2 * 100}&#x27;
+
+# 현재 서버에서 사용가능한 memory와 백분율로 표현된 사용률
+printf &quot;#Disk Usage: &quot;
+df -a -BM | grep /dev/map | awk &#x27;{sum+=$3}END{print sum}&#x27; | tr -d &#x27;\n&#x27;
+printf &quot;/&quot;
+df -a -BM | grep /dev/map | awk &#x27;{sum+=$4}END{print sum}&#x27; | tr -d &#x27;\n&#x27;
+printf &quot;MB (&quot;
+df -a -BM | grep /dev/map | awk &#x27;{sum1+=$3 ; sum2+=$4 }END{printf &quot;%d&quot;, sum1 / sum2 * 100}&#x27; | tr -d &#x27;\n&#x27;
+printf &quot;%%)\n&quot;
+
+# 백분율로 표현된 프로세서들의 현재 사용률
+printf &quot;#CPU load: &quot;
+mpstat | grep all | awk &#x27;{printf &quot;%.2f%%\n&quot;, 100-$13}&#x27;
+
+# 마지막으로 재시작된 날짜와 시간
+printf &quot;#Last boot: &quot;
+who -b | awk &#x27;{printf $3&quot; &quot;$4&quot;\n&quot;}&#x27;
+
+# LVM의 활성화 여부
+printf &quot;#LVM use: &quot;
+if [ &quot;$(lsblk | grep lvm | wc -l)&quot; -gt 0 ] ; then printf &quot;yes\n&quot; ; else printf &quot;no\n&quot; ; fi
+
+# 활성화된 연결들의 개수
+printf &quot;#Connections TCP : &quot;
+ss | grep -i tcp | wc -l | tr -d &#x27;\n&#x27;
+printf &quot; ESTABLISHED\n&quot;
+
+# 서버를 사용하고 있는 유저의 수
+printf &quot;#User log: &quot;
+who | wc -l
+
+# 서버의 IPv4 주소와 MAC 주소
+printf &quot;#Network: IP &quot;
+hostname -I | tr -d &#x27;\n&#x27;
+printf &quot;(&quot;
+ip link show | awk &#x27;$1 == &quot;link/ether&quot; {print $2}&#x27; | sed &#x27;2, $d&#x27; | tr -d &#x27;\n&#x27;
+printf &quot;)\n&quot;
+
+# sudo 프로그램으로 실행된 명령의 수
+printf &quot;#Sudo : &quot;
+ls -l /var/log/sudo/00/00 | grep &#x27;root&#x27; | wc -l | tr -d &#x27;\n&#x27;
+printf &quot; cmd\n&quot;</code></pre></details></li></ul><p id="b439e8db-2203-47cd-8a88-652d5a18b883" class="">
+</p><ul id="652e3c8c-43c6-47eb-bb77-07d77344eba4" class="toggle"><li><details open=""><summary>비밀번호 변경 옵션 정리</summary><pre id="9c29080b-c95b-4762-a25c-50a917728168" class="code"><code>vi /etc/login.defs
+vi /etc/pam.d/common-password</code></pre><ul id="c23861a4-1595-4cc6-8f53-3c9c98bffea7" class="bulleted-list"><li style="list-style-type:disc"><code>retry</code> : 재시도 횟수 제한</li></ul><ul id="5cf9a369-3cb3-483a-8285-5bbf3df50fe2" class="bulleted-list"><li style="list-style-type:disc"><code>minlen</code> : 최소길이 설정</li></ul><ul id="b9cb8b5e-9f51-4ca8-b9a6-478b921d3f1c" class="bulleted-list"><li style="list-style-type:disc"><code>ucredit</code> (upper case credit) : 대문자 포함 옵션</li></ul><ul id="ebb24a1d-3039-409a-9b16-d2e349dfa105" class="bulleted-list"><li style="list-style-type:disc"><code>lcredit</code> (lower case credit) : 소문자 포함 옵션</li></ul><ul id="588856e4-8544-490d-a5d6-83c9dd1b80fb" class="bulleted-list"><li style="list-style-type:disc"><code>dcredit</code> (decimal credit) : 숫자 포함 옵션<p id="9bec3146-64b4-45c1-8060-b26740ad5f73" class="">⇒ credit 옵션 뒤에 붙는 숫자는 minlen 값을 계산하는 크레디트 값으로 적용된다.</p></li></ul><ul id="9a7eb3f7-bc71-45dd-9ccf-9f5ed3a85d9b" class="bulleted-list"><li style="list-style-type:disc"><code>maxrepeat</code> : 연속으로 같은 문자의 허용</li></ul><ul id="84d9bf45-5e39-42ab-af0d-6649a211e815" class="bulleted-list"><li style="list-style-type:disc"><code>reject_username</code> : username 거부</li></ul><ul id="074ce280-aa3c-4c2b-93f4-1da51af5009e" class="bulleted-list"><li style="list-style-type:disc"><code>enforce_for_root</code> : root 사용자도 암호정책을 지켜야함<p id="5b31663b-8a5d-499c-bced-753d0c9c7eb9" class="">⇒ root 사용자로 로그인 한 후 일반사용자 계정의 암호를 재설정할 때, 함오정책에 위배되어도 에러메세지만 출력하고 계속 진행됨.</p></li></ul><ul id="e1e19eae-9227-4ac1-b29d-e252c39d685e" class="bulleted-list"><li style="list-style-type:disc"><code>difok</code> : password 만료 7일 전 알람</li></ul></details></li></ul><p id="93ca729a-9750-468d-9323-49d37052cf78" class="">
+</p><p id="0b8b92e0-0daf-4e29-94c9-f862fabb8ac1" class="">
+</p><pre id="8c41c8b2-fad7-4b11-97ae-29ed9c2d8f7a" class="code"><code>root : Hankong127**
+jaeyyoo : Wdwd180072</code></pre><ul id="93cc2f8c-2295-46ec-af36-4f0d67dd00c5" class="toggle"><li><details open=""><summary></summary><p id="e76caa4b-3dcb-4176-a5bf-ab97c87a223a" class=""><a href="https://www.notion.so/born2beroot-2ce1177e08904c329fb437c7fdcd7113">https://www.notion.so/born2beroot-2ce1177e08904c329fb437c7fdcd7113</a></p><p id="a8e51e09-0350-4661-ade1-228ad352d798" class=""><a href="https://www.notion.so/SSH-SSH-bc716b8f40604d45a013ad4f169984c2">https://parkseunghan.notion.site/born2beroot-afdb78d74995456d9c91a4ae1be9874f?p=bc716b8f40604d45a013ad4f169984c2&amp;pm=s</a></p><ul id="14f83ca1-02ee-4966-9f61-8eced8ecdd7c" class="bulleted-list"><li style="list-style-type:disc"><code><mark class="highlight-gray"><a href="https://techdebt.tistory.com/18">born2beroot 설정</a></mark></code></li></ul><ul id="63f6e3c9-2027-4821-b35e-df1792d5e1e2" class="bulleted-list"><li style="list-style-type:disc"><code><mark class="highlight-gray"><a href="https://velog.io/@augus-xury/가상머신Debian-세팅하기#php-설치">Zero2Bang velog</a></mark></code></li></ul><ul id="6d31f61c-53b8-462c-944b-f964d7c9adab" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray"><code><a href="https://www.notion.so/Born2beroot-or-jaehwkim-28ab81c4ed624e5fb7820f14940fd6c4">jaehwkim notion</a></code></mark></li></ul><p id="b01b7a9a-3fa8-446e-89c6-9758722b23a1" class="">
+</p></details></li></ul></div></article></body></html>
