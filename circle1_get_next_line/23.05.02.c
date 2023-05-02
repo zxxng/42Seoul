@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   before_get_next_line_utils.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:04:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/02/26 16:51:05 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 19:40:14 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "before_get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -58,7 +58,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (res);
 }
 
-char	*ft_strjoin(char *s1, char *s2, size_t idx)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*arr;
 	int		len;
@@ -70,12 +70,12 @@ char	*ft_strjoin(char *s1, char *s2, size_t idx)
 			return (NULL);
 		*s1 = '\0';
 	}
-	len = ft_strlen(s1) + idx;
+	len = ft_strlen(s1) + ft_strlen(s2);
 	arr = malloc(sizeof(char) * len + 1);
 	if (!arr)
 		return (0);
 	ft_memcpy(arr, s1, ft_strlen(s1));
-	ft_memcpy(arr + ft_strlen(s1), s2, idx);
+	ft_memcpy(arr + ft_strlen(s1), s2, ft_strlen(s2));
 	arr[len] = '\0';
 	return (arr);
 }

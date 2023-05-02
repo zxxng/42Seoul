@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utills.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 19:42:05 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/05/02 19:59:13 by jaeyyoo          ###   ########.fr       */
+/*   Created: 2023/05/02 19:42:19 by jaeyyoo           #+#    #+#             */
+/*   Updated: 2023/05/02 19:56:10 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-
-char	*get_next_line(int fd)
-{
-	static char *srg;
-}
 
 
