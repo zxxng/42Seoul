@@ -6,7 +6,7 @@
 #    By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 13:26:21 by jaeyyoo           #+#    #+#              #
-#    Updated: 2023/01/05 12:39:22 by jaeyyoo          ###   ########.fr        #
+#    Updated: 2023/05/12 12:58:01 by jaeyyoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ else
 endif
 
 all : $(NAME)
+	sleep 1
 
 $(NAME) : $(OBJ_FILES)
 	ar rc $@ $(OBJ_FILES)
@@ -46,6 +47,7 @@ $(NAME) : $(OBJ_FILES)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 bonus:
+
 	make WITH_BONUS=1
 
 clean :
@@ -54,7 +56,7 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 
-re : 
+re :
 	make fclean
 	make all
 
