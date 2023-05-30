@@ -1,7 +1,10 @@
-안녕하세요
 hello
-hi
-dkkdkdkdkdkdkdk
+world
 
 
-djfkdsjflkjfl
+get_next_line test
+
+
+rrrrrrrrrrrrr
+
+?!@?!??##@?!

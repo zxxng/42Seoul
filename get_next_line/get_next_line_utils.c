@@ -6,41 +6,11 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:18:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/05/12 13:07:09 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/05/15 23:11:37 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *s1)
-{
-	int		i;
-	int		len;
-	char	*arr;
-
-	len = ft_strlen(s1);
-	arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!arr)
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		arr[i] = s1[i];
-		i++;
-	}
-	arr[i] = '\0';
-	return (arr);
-}
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -62,6 +32,36 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (res);
 }
 
+size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *s1)
+{
+	int		i;
+	int		len;
+	char	*arr;
+
+	len = ft_strlen(s1);
+	arr = malloc(sizeof(char) * (len + 1));
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		arr[i] = s1[i];
+		i++;
+	}
+	arr[i] = '\0';
+	return (arr);
+}
+
 void	*ft_memmove(void *dst, void *src, size_t len)
 {
 	unsigned char	*res;
@@ -72,7 +72,7 @@ void	*ft_memmove(void *dst, void *src, size_t len)
 	val = (unsigned char *)src;
 	i = 0;
 	if (!res && !val)
-		return (0);
+		return (NULL);
 	if ((size_t)dst - (size_t)val < len)
 	{
 		i = len - 1;
@@ -95,12 +95,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1)
 	{
 		s1 = malloc(1);
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	len = ft_strlen(s1) + ft_strlen(s2);
 	arr = malloc(sizeof(char) * (len + 1));
 	if (!arr)
-		return (0);
+	{
+		free(s1);
+		return (NULL);
+	}
 	ft_memcpy(arr, s1, ft_strlen(s1));
 	ft_memcpy(&arr[ft_strlen(s1)], s2, ft_strlen(s2) + 1);
 	arr[len] = '\0';

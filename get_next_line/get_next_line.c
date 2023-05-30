@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:18:41 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/05/12 17:41:39 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/05/30 11:36:27 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,45 @@ int	check_n(char *buf)
 	return (0);
 }
 
-char	*ft_read_line(int fd, char *srg)
+char	*read_result(char **buf, char **srg, int read_size)
+{
+	if (read_size == 0)
+	{
+		free(*buf);
+		return (*srg);
+	}
+	if (*srg != NULL)
+		free(*srg);
+	free(*buf);
+	return (NULL);
+}
+
+char	*read_line(int fd, char **srg)
 {
 	char	*buf;
 	int		read_size;
 
-	buf = malloc(BUFFER_SIZE + 1);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+	{
+		free(*srg);
+		return (NULL);
+	}
 	buf[0] = '\0';
 	while (!check_n(buf))
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
-		if (read_size == 0)
-		{
-			free(buf);
-			return (srg);
-		}
-		if (read_size == -1)
-		{
-			if (srg != 0)
-				free(srg);
-			free(buf);
-			return (NULL);
-		}
+		if (read_size == 0 || read_size == -1)
+			return (read_result(&buf, srg, read_size));
 		buf[read_size] = '\0';
-		srg = ft_strjoin(srg, buf);
+		*srg = ft_strjoin(*srg, buf);
+		if (!(*srg))
+			break ;
 	}
 	free(buf);
-	return (srg);
+	return (*srg);
 }
 
 char	*get_new_line(char **srg)
@@ -67,7 +79,7 @@ char	*get_new_line(char **srg)
 	srg_len = ft_strlen(*srg);
 	idx = 0;
 	len = check_n(*srg);
-	res = (char *)malloc(sizeof(char) * (len + 1));
+	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
 	while (idx < len)
@@ -86,9 +98,7 @@ char	*get_next_line(int fd)
 	static char	*srg;
 	char		*res;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	srg = ft_read_line(fd, srg);
+	srg = read_line(fd, &srg);
 	if (!srg)
 		return (NULL);
 	if (!check_n(srg))
@@ -104,7 +114,10 @@ char	*get_next_line(int fd)
 	{
 		res = get_new_line(&srg);
 		if (!res)
+		{
 			free(srg);
+			srg = NULL;
+		}
 	}
 	return (res);
 }
@@ -115,18 +128,18 @@ char	*get_next_line(int fd)
 int	main(void)
 {
 	int		fd = open("./test01.txt",O_RDONLY);
-	char	*result;
+	char	*line;
 	int		i = 1;
 
 	while (1)
 	{
-		result = get_next_line(fd);
-		if (!result)
+		line = get_next_line(fd);
+		if (!line)
 		{
 			printf("null\n");
 			return (0);
 		}
-		printf("%d번째\n%s\n",i, result);
+		printf("%d번째: %s\n",i, line);
 		i++;
 	}
 	return (0);
