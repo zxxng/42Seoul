@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 13:20:01 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/03 19:51:54 by jaeyyoo          ###   ########.fr       */
+/*   Created: 2023/01/02 13:23:45 by jaeyyoo           #+#    #+#             */
+/*   Updated: 2023/01/02 13:23:49 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str, int *overflow)
-{
-	int	i;
-	int	sign;
-	long long	answer;
+#include "libft.h"
 
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	int		len;
+	char	*arr;
+
+	len = ft_strlen(s1);
+	arr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!arr)
+		return (0);
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	while (s1[i])
 	{
-		if (str[i] == '-')
-			sign = -sign;
+		arr[i] = s1[i];
 		i++;
 	}
-	answer = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		answer = answer * 10 + (str[i] - '0');
-		i++;
-	}
-	if (answer > 2147483647 || answer < -2147483648)
-		overflow = 0;
-	return (answer * sign);
+	arr[i] = '\0';
+	return (arr);
 }

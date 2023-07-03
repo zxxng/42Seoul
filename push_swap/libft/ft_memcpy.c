@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/03 19:48:50 by jaeyyoo          ###   ########.fr       */
+/*   Created: 2023/01/02 13:22:11 by jaeyyoo           #+#    #+#             */
+/*   Updated: 2023/01/02 13:22:17 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct s_data
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int				*raw;
-	int				*sort;
-	int				*index;
-	int				size;
-}	t_data;
+	size_t			i;
+	unsigned char	*res;
+	unsigned char	*val;
 
-typedef struct s_deque
-{
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_deque;
-
-#endif
+	res = (unsigned char *)dst;
+	val = (unsigned char *)src;
+	i = 0;
+	if (res != val && n)
+	{
+		while (i < n)
+		{
+			res[i] = val[i];
+			i++;
+		}
+	}
+	return (res);
+}
