@@ -6,14 +6,14 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:20:01 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/03 19:51:54 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/04 14:40:22 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str, int *overflow)
 {
-	int	i;
-	int	sign;
+	int			i;
+	long long	sign;
 	long long	answer;
 
 	i = 0;
@@ -32,7 +32,16 @@ int	ft_atoi(const char *str, int *overflow)
 		answer = answer * 10 + (str[i] - '0');
 		i++;
 	}
-	if (answer > 2147483647 || answer < -2147483648)
-		overflow = 0;
+	if ((answer * sign) > 2147483647 || (answer * sign) < -2147483648)
+		*overflow = 0;
 	return (answer * sign);
 }
+
+//#include <stdio.h>
+//int main()
+//{
+//	char arr[15] = "2147483648";
+//	int overflow = 1;
+//	
+//	printf("atoi : %d, overflow: %d", ft_atoi(arr, &overflow), overflow);
+//}

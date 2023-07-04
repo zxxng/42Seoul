@@ -6,13 +6,13 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:24:06 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/01/02 13:24:09 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/04 13:40:11 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	empty_string(char const *str)
+static int	empty(char const *str)
 {
 	int	len;
 
@@ -28,18 +28,16 @@ static	empty_string(char const *str)
 	return (1);
 }
 
-char	*ft_strjoin_with_space(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			s1_len;
-	size_t			s2_len;
+	size_t			len;
 	char			*str;
 	unsigned int	i;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (empty_string(s2))
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (empty(s2))
 		return (NULL);
-	str = malloc(sizeof(char) * (s1_len + s2_len + 2));
+	str = malloc(sizeof(char) * (len + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
