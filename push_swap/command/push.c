@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:11:30 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 17:33:04 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:03:06 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_deque *from, t_deque *to, char c)
 {
-	t_node	target;
+	t_node	*target;
 
 	if (from->size < 1)
 		return ;

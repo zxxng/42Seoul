@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:25:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 20:05:43 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:21:06 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,21 @@ int	error_messege(void)
 	exit(1);
 }
 
-#include <stdio.h>
+//#include <stdio.h>
+//void print_deque(t_deque *deque)
+//{
+//  printf("size : %d\n",deque->size);
+//  t_node *current;
+//	current = deque->front;
+//  for (int i = 0; i < deque->size; ++i)
+//  {
+//    printf("%d ", currnt->num);
+//	current = current->next;
+//  }
+//  printf("\n");
+//
+//}
+
 int	main(int ac, char **av)
 {
 	t_deque	*a;
@@ -33,10 +47,13 @@ int	main(int ac, char **av)
 	if (!input)
 		return (error_messege());
 	conversion_input = conversion(input);
+	if (!conversion_input)
+		return (error_messege());
 	a = malloc(sizeof(t_deque));
 	b = malloc(sizeof(t_deque));
 	if (!a || !b)
 		exit(1);
-	input_to_node(conversion_input, &a);
+	input_to_node(conversion_input, a);
+	//print_deque(a);
 	free(input);
 }

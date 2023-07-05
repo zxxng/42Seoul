@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 21:13:39 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:10:27 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 typedef struct s_node
 {
 	int				num;
-	int				a;
-	int				b;
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
@@ -56,7 +54,7 @@ void	reverse_rotate_twice(t_deque *a, t_deque *b);
 // converter
 int		input_length(char **input);
 void	add_node(int data, t_deque *stack_a);
-void	input_to_node(int *conversion_input, t_deque **a);
+void	input_to_node(int *conversion_input, t_deque *a);
 int		*conversion(char **original_input);
 
 int		*sort_array(int *arr, int n);

@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 18:36:52 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 21:21:51 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:20:36 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ void	add_node(int data, t_deque *stack_a)
 	stack_a->rear = new_node;
 }
 
-void	input_to_node(int *conversion_input, t_deque **a)
+void	input_to_node(int *conversion_input, t_deque *a)
 {
 	int	i;
 
-	(*a)->front = NULL;
-	(*a)->rear = NULL;
-	(*a)->size = 0;
+	a->front = NULL;
+	a->rear = NULL;
+	a->size = 0;
 	i = 0;
 	while (conversion_input[i])
 	{
-		add_node(conversion_input[i], *a);
-		(*a)->size += 1;
+		add_node(conversion_input[i], a);
+		a->size += 1;
 		i++;
 	}
 	free(conversion_input);
@@ -66,20 +66,20 @@ int	*conversion(char **original_input)
 
 	len = input_length(original_input);
 	input = char_to_int(original_input, len);
-	sort_input = sort_array(input, len);
-	if (original_input == NULL || sort_input == NULL)
+	if (!input)
 		return (NULL);
-	i = 0;
-	while (i < len)
+	sort_input = sort_array(input, len);
+	if (!sort_input)
+		return (NULL);
+	i = -1;
+	while (++i < len)
 	{
-		j = 0;
-		while (j < len)
+		j = -1;
+		while (++j < len)
 		{
 			if (input[i] == sort_input[j])
 				input[i] = j;
-			j++;
 		}
-		i++;
 	}
 	free(sort_input);
 	return (input);

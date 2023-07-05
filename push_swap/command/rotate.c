@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:11:53 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 17:33:10 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:03:19 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate(t_deque *deque, char c)
 {
-	t_node	first;
+	t_node	*first;
 
 	if (deque->size < 2)
 		return ;

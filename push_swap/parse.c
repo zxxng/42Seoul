@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:10:47 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 21:30:39 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 21:50:56 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_duplicate(int *raw, int len)
 	while (i < len)
 	{
 		j = i + 1;
-		while (j < len - 1)
+		while (j < len)
 		{
 			if (raw[i] == raw[j])
 				return (0);
@@ -86,7 +86,6 @@ int	check_duplicate(int *raw, int len)
 	return (1);
 }
 
-#include <stdio.h>
 int	*char_to_int(char **input, int len)
 {
 	int	i;
@@ -110,8 +109,5 @@ int	*char_to_int(char **input, int len)
 	}
 	if (!check_duplicate(raw, len))
 		return (0);
-	for (int k=0; k<len; k++){
-		printf("raw[%d] : %d\n", k , raw[k]);
-	}
 	return (raw);
 }

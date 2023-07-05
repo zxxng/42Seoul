@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:11:48 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 17:33:08 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 22:12:32 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	reverse_rotate(t_deque *deque, char c)
 {
-	t_node	last;
+	t_node	*last;
 
 	if (deque->size < 2)
 		return ;
@@ -23,7 +23,7 @@ void	reverse_rotate(t_deque *deque, char c)
 	else if (c == 'b')
 		write(1, "rrb\n", 3);
 	last = pop_rear(deque);
-	push_front(deque, first);
+	push_front(deque, last);
 }
 
 void	reverse_rotate_twice(t_deque *a, t_deque *b)
