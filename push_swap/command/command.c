@@ -88,13 +88,11 @@ t_node	*pop_rear(t_deque *deque)
 	return (tmp);
 }
 
-int	check_sorted(t_deque *a, t_deque *b)
+int	check_sorted(t_deque *a)
 {
 	t_node	*tmp;
 
 	tmp = a->front;
-	if (b->size != 0 || a->size == 0)
-		return (0);
 	if (a->size == 1)
 		return (1);
 	while (tmp->next)

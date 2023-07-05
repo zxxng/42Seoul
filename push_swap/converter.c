@@ -22,7 +22,7 @@ int	input_length(char **input)
 	return (i);
 }
 
-void	add_node(int data, t_deque *stack_a)
+static void	add_node(int data, t_deque *stack_a)
 {
 	t_node	*new_node;
 
@@ -39,15 +39,18 @@ void	add_node(int data, t_deque *stack_a)
 	stack_a->rear = new_node;
 }
 
-void	input_to_node(int *conversion_input, t_deque *a)
+void	input_to_node(int *conversion_input, t_deque *a, t_deque *b, int len)
 {
 	int	i;
 
 	a->front = NULL;
 	a->rear = NULL;
 	a->size = 0;
+	b->front = NULL;
+	b->rear = NULL;
+	b->size = 0;
 	i = 0;
-	while (conversion_input[i])
+	while (i < len)
 	{
 		add_node(conversion_input[i], a);
 		a->size += 1;

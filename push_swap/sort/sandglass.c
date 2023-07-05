@@ -12,7 +12,16 @@
 
 #include "../push_swap.h"
 
-void	b_to_a(t_deque *a, t_deque *b)
+static void	sort_b(t_deque *b, int length)
+{
+	while (b->front->num != length)
+	{
+		if (b->front->num < b->rear->num)
+			reverse_rotate(b, 'b');
+	}
+}
+
+static void	b_to_a(t_deque *a, t_deque *b)
 {
 	int	length;
 
@@ -25,31 +34,42 @@ void	b_to_a(t_deque *a, t_deque *b)
 	}
 }
 
-void	a_to_b(t_deque *a, t_deque *b, int chunk, int i)
+static void	a_to_b(t_deque *a, t_deque *b, int chunk, int count)
 {
 	int	length;
 
 	length = a->size - 1;
-	while (a->size != 0)
+	while (length != 0)
 	{
-		if (a->front->num <= i)
+		if (a->front->num <= count)
 		{
 			push(a, b, 'b');
-			i++;
+			count++;
 		}
-		else if (a->front->num > i && a->front->num <= i + chunk)
+		else if (a->front->num > count && a->front->num <= count + chunk)
 		{
 			push(a, b, 'b');
 			rotate(b, 'b');
-			i++;
+			count++;
 		}
-		else if (a->front->num > (i + chunk))
+		else if (a->front->num > (count + chunk))
 		{
-			if (i < a->size / 2 && i >= 0)
+			if (count < length / 2 && count >= 0)
 				reverse_rotate(a, 'a');
 			else
 				rotate(a, 'a');
 		}
 		length--;
 	}
+}
+
+void	sandglass_start(t_deque *a, t_deque *b)
+{
+	int	chunk;
+	int	count;
+
+	chunk = 30;
+	count = 0;
+	a_to_b(a, b, chunk, count);
+	b_to_a(a, b);
 }

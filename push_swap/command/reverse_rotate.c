@@ -19,9 +19,9 @@ void	reverse_rotate(t_deque *deque, char c)
 	if (deque->size < 2)
 		return ;
 	if (c == 'a')
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (c == 'b')
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	last = pop_rear(deque);
 	push_front(deque, last);
 }
@@ -32,7 +32,7 @@ void	reverse_rotate_twice(t_deque *a, t_deque *b)
 		return (reverse_rotate(b, 'b'));
 	else if (b->size < 2)
 		return (reverse_rotate(a, 'a'));
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 	reverse_rotate(a, ' ');
 	reverse_rotate(b, ' ');
 }

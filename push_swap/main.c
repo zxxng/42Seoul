@@ -53,7 +53,9 @@ int	main(int ac, char **av)
 	b = malloc(sizeof(t_deque));
 	if (!a || !b)
 		exit(1);
-	input_to_node(conversion_input, a);
+	check_sorted(a);
+	input_to_node(conversion_input, a, b, input_length(input));
+	sandglass_start(a, b);
 	//print_deque(a);
 	free(input);
 }

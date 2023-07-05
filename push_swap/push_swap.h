@@ -42,7 +42,7 @@ void	push_front(t_deque *deque, t_node *new);
 void	push_rear(t_deque *deque, t_node *new);
 t_node	*pop_front(t_deque *deque);
 t_node	*pop_rear(t_deque *deque);
-int		check_sorted(t_deque *a, t_deque *b);
+int		check_sorted(t_deque *a)
 void	swap(t_deque *deque, char c);
 void	swap_twice(t_deque *a, t_deque *b);
 void	push(t_deque *from, t_deque *to, char c);
@@ -54,9 +54,12 @@ void	reverse_rotate_twice(t_deque *a, t_deque *b);
 // converter
 int		input_length(char **input);
 void	add_node(int data, t_deque *stack_a);
-void	input_to_node(int *conversion_input, t_deque *a);
+void	input_to_node(int *conversion_input, t_deque *a, t_deque *b, int len);
 int		*conversion(char **original_input);
 
 int		*sort_array(int *arr, int n);
+
+// sort
+void	sandglass_start(t_deque *a, t_deque *b);
 
 #endif
