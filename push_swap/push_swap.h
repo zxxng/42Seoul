@@ -19,16 +19,18 @@
 
 typedef struct s_node
 {
-	int				data;
+	int				num;
+	int				a;
+	int				b;
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
 
 typedef struct s_deque
 {
-	t_node			front;
-	t_node			rear;
-	unsigned int	size;
+	t_node			*front;
+	t_node			*rear;
+	int	size;
 }	t_deque;
 
 char	*join_input(int ac, char **av);

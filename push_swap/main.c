@@ -15,7 +15,7 @@
 int	error_messege(void)
 {
 	write(1, "Error\n", 6);
-	return (1);
+	exit(1);
 }
 
 int	input_length(char **input)
@@ -30,27 +30,64 @@ int	input_length(char **input)
 
 #include <stdio.h>
 
+void	add_node(int data, t_deque *stack_a)
+{
+	t_node	*new_node;
+
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (!new_node)
+		return ;
+	new_node->num = data;
+	new_node->prev = stack_a->rear;
+	if (stack_a->rear != NULL)
+		stack_a->rear -> next = new_node;
+	new_node->next = NULL;
+	if ((stack_a->front) == NULL)
+		stack_a->front = new_node;
+	stack_a->rear = new_node;
+}
+
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_deque	*a;
+	t_deque *b;
 	char	**input;
+	int		*tmp;
+	int		i;
+	int		len;
 
 	if (ac < 2)
-		return (0);
+		exit(1);
 	input = parse_input(join_input(ac, av));
 	if (!input)
 		return (error_messege());
-	data.size = input_length(input);
-	int *test = char_to_int(input, data.size);
-	if (test == NULL)
-		return (error_messege());
-	//data->raw = char_to_int(input, len);
-	int i = 0;
-	while (1)
+	len = input_length(input);
+	tmp = char_to_int(input, len);
+	if (tmp == NULL)
+		exit(1);
+	a = (t_deque *)malloc(sizeof(t_deque));
+	b = (t_deque *)malloc(sizeof(t_deque));
+	if (!a || !b)
+		exit(1);
+	a -> front = NULL;
+	a -> rear = NULL;
+	a -> size = 0;
+	while (tmp[i])
 	{
-		if (test[i] == 0)
-			break;
-		printf("test[%d] : %d\n", i, test[i]);
+		add_node(tmp[i], a);
+		printf("data: %d, num: %d\n", tmp[i], a->rear->num); 
+		a->size += 1;
 		i++;
 	}
+	free(tmp);
+	free(input);
 }
+
+	// int i = 0;
+	// while (1)
+	// {
+	// 	if (test[i] == 0)
+	// 		break;
+	// 	printf("test[%d] : %d\n", i, test[i]);
+	// 	i++;
+	// }

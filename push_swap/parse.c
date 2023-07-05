@@ -47,6 +47,8 @@ char	**parse_input(char *join)
 
 	i = 0;
 	flag = 1;
+	if (join == NULL)
+		return (NULL);
 	while (join[i])
 	{
 		if (!(join[i] >= '0' && join[i] <= '9') && \
@@ -57,6 +59,7 @@ char	**parse_input(char *join)
 		if (flag == 0)
 		{
 			free(join);
+			// return (error_messege());
 			return (NULL);
 		}
 		i++;
