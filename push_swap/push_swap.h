@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/04 20:18:37 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 21:13:39 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,37 @@ typedef struct s_node
 
 typedef struct s_deque
 {
-	t_node			*front;
-	t_node			*rear;
-	int	size;
+	t_node	*front;
+	t_node	*rear;
+	int		size;
 }	t_deque;
 
 char	*join_input(int ac, char **av);
 char	**parse_input(char *join);
 int		input_length(char **input);
-int		check_duplicate(char **input, int len);
+int		check_duplicate(int *raw, int len);
 int		*char_to_int(char **input, int len);
 
-// sort
-t_node *last_node(t_node *node);
-void update_partition_ptrs(t_node **new_head, t_node **new_high, t_node *pivot, t_node *prev);
-t_node *partition(t_node *head, t_node *high, t_node **new_head, t_node **new_high);
-t_node *_quick_sort_nodes(t_node *head, t_node *high);
-void deque_quick_sort(t_deque *deque);
+// command
+void	push_front(t_deque *deque, t_node *new);
+void	push_rear(t_deque *deque, t_node *new);
+t_node	*pop_front(t_deque *deque);
+t_node	*pop_rear(t_deque *deque);
+int		check_sorted(t_deque *a, t_deque *b);
+void	swap(t_deque *deque, char c);
+void	swap_twice(t_deque *a, t_deque *b);
+void	push(t_deque *from, t_deque *to, char c);
+void	rotate(t_deque *deque, char c);
+void	rotate_twice(t_deque *a, t_deque *b);
+void	reverse_rotate(t_deque *deque, char c);
+void	reverse_rotate_twice(t_deque *a, t_deque *b);
 
+// converter
+int		input_length(char **input);
+void	add_node(int data, t_deque *stack_a);
+void	input_to_node(int *conversion_input, t_deque **a);
+int		*conversion(char **original_input);
+
+int		*sort_array(int *arr, int n);
 
 #endif

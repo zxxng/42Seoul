@@ -1,69 +1,74 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/04 20:18:37 by jaeyyoo          ###   ########.fr       */
+/*   Created: 2023/07/05 15:28:01 by jaeyyoo           #+#    #+#             */
+/*   Updated: 2023/07/05 19:05:50 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node *last_node(t_node *node) {
-    while (node && node->next) {
-        node = node->next;
-    }
-    return node;
+static void	sort_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void update_partition_ptrs(t_node **new_head, t_node **new_high, t_node *pivot, t_node *prev) {
-    if (!(*new_head)) *new_head = pivot;
-    *new_high = prev;
+static int	partition(int *arr, int low, int high)
+{
+	int	pivot;
+	int	i;
+	int	j;
+
+	pivot = arr[high];
+	i = low - 1;
+	j = low;
+	while (j < high)
+	{
+		if (arr[j] < pivot)
+		{
+			i++;
+			sort_swap(&arr[i], &arr[j]);
+		}
+		j++;
+	}
+	sort_swap(&arr[i + 1], &arr[high]);
+	return (i + 1);
 }
 
-t_node *partition(t_node *head, t_node *high, t_node **new_head, t_node **new_high) {
-    t_node *pivot = high, *prev = NULL, *cur = head, *tail = pivot;
+static void	quick_sort(int *arr, int low, int high)
+{
+	int	pi;
 
-    while (cur != pivot) {
-        if (cur->num < pivot->num) {
-            if (!(*new_head)) *new_head = cur;
-            prev = cur;
-            cur = cur->next;
-        } else {
-            if (prev) prev->next = cur->next;
-            t_node *tmp = cur->next;
-            cur->next = NULL;
-            tail->next = cur;
-            tail = cur;
-            cur = tmp;
-        }
-    }
-    update_partition_ptrs(new_head, new_high, pivot, tail);
-    return pivot;
+	if (low < high)
+	{
+		pi = partition(arr, low, high);
+		quick_sort(arr, low, pi - 1);
+		quick_sort(arr, pi + 1, high);
+	}
 }
 
-t_node *_quick_sort_nodes(t_node *head, t_node *high) {
-    if (!head || head == high) return head;
+int	*sort_array(int *arr, int n)
+{
+	int	*new_array;
+	int	i;
 
-    t_node *new_head = NULL, *new_high = NULL;
-    t_node *pivot = partition(head, high, &new_head, &new_high);
-
-    if (new_head != pivot) {
-        t_node *tmp = new_head;
-        while (tmp->next != pivot) tmp = tmp->next;
-        tmp->next = NULL;
-
-        new_head = _quick_sort_nodes(new_head, tmp);
-        last_node(new_head)->next = pivot;
-    }
-    pivot->next = _quick_sort_nodes(pivot->next, new_high);
-    return new_head;
-}
-
-void deque_quick_sort(t_deque *deque) {
-    t_node *high = last_node(deque->front);
-    deque->front = _quick_sort_nodes(deque->front, high);
+	new_array = malloc(sizeof(int) * n);
+	if (!new_array)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		new_array[i] = arr[i];
+		i++;
+	}
+	quick_sort(new_array, 0, n - 1);
+	return (new_array);
 }

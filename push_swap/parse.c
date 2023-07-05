@@ -6,12 +6,11 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:10:47 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/04 16:06:56 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/05 21:30:39 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 char	*join_input(int ac, char **av)
 {
@@ -35,7 +34,6 @@ char	*join_input(int ac, char **av)
 		join = temp;
 		i++;
 	}
-	printf("join : %s\n", join);
 	return (join);
 }
 
@@ -59,7 +57,6 @@ char	**parse_input(char *join)
 		if (flag == 0)
 		{
 			free(join);
-			// return (error_messege());
 			return (NULL);
 		}
 		i++;
@@ -69,18 +66,18 @@ char	**parse_input(char *join)
 	return (split);
 }
 
-int	check_duplicate(char **input, int len)
+int	check_duplicate(int *raw, int len)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < len)
 	{
 		j = i + 1;
-		while (input[j])
+		while (j < len - 1)
 		{
-			if (input[i] == input[j])
+			if (raw[i] == raw[j])
 				return (0);
 			j++;
 		}
@@ -89,14 +86,13 @@ int	check_duplicate(char **input, int len)
 	return (1);
 }
 
+#include <stdio.h>
 int	*char_to_int(char **input, int len)
 {
 	int	i;
 	int	overflow;
 	int	*raw;
 
-	if (!check_duplicate(input, len))
-		return (0);
 	raw = malloc(sizeof(int) * len);
 	if (!raw)
 		return (0);
@@ -111,6 +107,11 @@ int	*char_to_int(char **input, int len)
 			return (NULL);
 		}
 		i++;
+	}
+	if (!check_duplicate(raw, len))
+		return (0);
+	for (int k=0; k<len; k++){
+		printf("raw[%d] : %d\n", k , raw[k]);
 	}
 	return (raw);
 }
