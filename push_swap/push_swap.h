@@ -39,4 +39,12 @@ int		input_length(char **input);
 int		check_duplicate(char **input, int len);
 int		*char_to_int(char **input, int len);
 
+// sort
+t_node *last_node(t_node *node);
+void update_partition_ptrs(t_node **new_head, t_node **new_high, t_node *pivot, t_node *prev);
+t_node *partition(t_node *head, t_node *high, t_node **new_head, t_node **new_high);
+t_node *_quick_sort_nodes(t_node *head, t_node *high);
+void deque_quick_sort(t_deque *deque);
+
+
 #endif

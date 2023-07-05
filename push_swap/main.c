@@ -47,6 +47,16 @@ void	add_node(int data, t_deque *stack_a)
 	stack_a->rear = new_node;
 }
 
+void print_sorted_list(t_deque *deque) {
+    t_node *current = deque->front;
+
+    while (current != NULL) {
+        printf("%d ", current->num);
+        current = current->next;
+    }
+    printf("\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_deque	*a;
@@ -81,6 +91,8 @@ int	main(int ac, char **av)
 	}
 	free(tmp);
 	free(input);
+	deque_quick_sort(a);
+	print_sorted_list(a);
 }
 
 	// int i = 0;
