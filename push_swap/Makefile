@@ -6,7 +6,7 @@
 #    By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/06 12:03:02 by jaeyyoo           #+#    #+#              #
-#    Updated: 2023/07/06 17:19:05 by jaeyyoo          ###   ########.fr        #
+#    Updated: 2023/07/07 00:18:01 by jaeyyoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SORT_DIR = ./sort/
 
 SRCS = $(COMMAND_DIR)command.c $(COMMAND_DIR)swap.c $(COMMAND_DIR)push.c \
 	   $(COMMAND_DIR)rotate.c $(COMMAND_DIR)reverse_rotate.c \
-	   $(SORT_DIR)bubble_sort.c $(SORT_DIR)sandglass.c \
+	   $(SORT_DIR)bubble_sort.c $(SORT_DIR)sandglass.c $(SORT_DIR)hard_sort.c\
 	   ./main.c ./parse.c ./converter.c
 OBJS = $(SRCS:%.c=%.o)
 

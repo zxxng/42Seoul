@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:25:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/06 21:25:25 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/06 21:51:17 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,17 @@ int	main(int ac, char **av)
 	int		len;
 
 	if (ac < 2)
-		exit(1);
+		return (0);
 	input = parse_input(join_input(ac, av));
 	if (!input)
 		return (error_messege());
 	len = input_length(input);
 	conversion_input = conversion(input);
+	if (!check_sorted(conversion_input, len))
+		return (0);
 	if (!conversion_input)
 		return (error_messege());
 	input_free(input, len);
 	if (!push_swap(conversion_input, len))
 		return (error_messege());
-	exit(0);
 }

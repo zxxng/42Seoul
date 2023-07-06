@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:56:50 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/06 16:05:43 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/07 00:17:17 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,18 @@ static void	a_to_b(t_deque *a, t_deque *b, int chunk, int count)
 void	sandglass_start(t_deque *a, t_deque *b)
 {
 	int	chunk;
-	int	standard;
 	int	count;
 
-	chunk = 10;
-	standard = 100;
-	while (a->size > standard)
+	if (a->size <= 5)
 	{
-		standard *= 3;
-		chunk *= 2;
+		sort_hard(a, b);
+		return ;
 	}
+	chunk = 5;
+	if (a->size >= 100)
+		chunk = 10;
+	if (a->size >= 500)
+		chunk = 30;
 	count = 0;
 	a_to_b(a, b, chunk, count);
 	b_to_a(a, b);

@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/06 12:18:28 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/07 00:16:02 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int		*conversion(char **original_input);
 // sort
 int		*sort_array(int *arr, int n);
 void	sandglass_start(t_deque *a, t_deque *b);
+void	sort_hard(t_deque *a, t_deque *b);
 
 #endif
