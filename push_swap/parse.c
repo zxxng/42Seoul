@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:10:47 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 21:50:56 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/06 16:50:47 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**parse_input(char *join)
 	while (join[i])
 	{
 		if (!(join[i] >= '0' && join[i] <= '9') && \
-			join[i] != '-' && join[i] != ' ')
+			join[i] != '-' && join[i] != '+' && join[i] != ' ')
 		{
 			flag = 0;
 		}
@@ -64,6 +64,22 @@ char	**parse_input(char *join)
 	split = ft_split(join, ' ');
 	free(join);
 	return (split);
+}
+
+int	check_sorted(int *arr, int len)
+{
+	int	i;
+
+	if (len == 1)
+		return (1);
+	i = 0;
+	while (i < len - 1)
+	{
+		if (arr[i] > arr[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	check_duplicate(int *raw, int len)
@@ -83,24 +99,26 @@ int	check_duplicate(int *raw, int len)
 		}
 		i++;
 	}
+	if (!check_sorted(raw, len))
+		return (0);
 	return (1);
 }
 
 int	*char_to_int(char **input, int len)
 {
 	int	i;
-	int	overflow;
+	int	error;
 	int	*raw;
 
 	raw = malloc(sizeof(int) * len);
 	if (!raw)
 		return (0);
 	i = 0;
-	overflow = 1;
+	error = 1;
 	while (i < len)
 	{
-		raw[i] = ft_atoi(input[i], &overflow);
-		if (overflow == 0)
+		raw[i] = ft_atoi(input[i], &error);
+		if (error == 0)
 		{
 			free(raw);
 			return (NULL);
@@ -108,6 +126,9 @@ int	*char_to_int(char **input, int len)
 		i++;
 	}
 	if (!check_duplicate(raw, len))
-		return (0);
+	{
+		free(raw);
+		return (NULL);
+	}
 	return (raw);
 }

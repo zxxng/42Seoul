@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:21:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/05 22:12:04 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/06 12:05:00 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_node	*pop_front(t_deque *deque)
 {
 	t_node	*tmp;
 
-	if (!deque || s->size == 0)
+	if (!deque || deque->size == 0)
 		return (0);
 	tmp = deque->front;
 	deque->front = deque->front->next;
@@ -86,20 +86,4 @@ t_node	*pop_rear(t_deque *deque)
 		deque->rear->next = 0;
 	deque->size--;
 	return (tmp);
-}
-
-int	check_sorted(t_deque *a)
-{
-	t_node	*tmp;
-
-	tmp = a->front;
-	if (a->size == 1)
-		return (1);
-	while (tmp->next)
-	{
-		if (tmp->num > tmp->next->num)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
 }

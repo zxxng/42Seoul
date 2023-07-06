@@ -5,35 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/10 14:26:51 by jaeyyoo           #+#    #+#              #
-#    Updated: 2023/07/06 12:21:06 by jaeyyoo          ###   ########.fr        #
+#    Created: 2023/07/06 12:03:02 by jaeyyoo           #+#    #+#              #
+#    Updated: 2023/07/06 17:19:05 by jaeyyoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
+CFLAGS = -Wall -Werror -Wextra 
 
-CFLAGS = -Wall -Wextra -Werror
+COMMAND_DIR = ./command/
+SORT_DIR = ./sort/
 
-NAME = libft.a
+SRCS = $(COMMAND_DIR)command.c $(COMMAND_DIR)swap.c $(COMMAND_DIR)push.c \
+	   $(COMMAND_DIR)rotate.c $(COMMAND_DIR)reverse_rotate.c \
+	   $(SORT_DIR)bubble_sort.c $(SORT_DIR)sandglass.c \
+	   ./main.c ./parse.c ./converter.c
+OBJS = $(SRCS:%.c=%.o)
 
-SRCS = ft_split.c ft_strdup.c ft_strjoin.c ft_memcpy.c ft_strlen.c ft_atoi.c
-
-OBJ = $(SRCS:.c=.o)
+LIB = -L./libft/ -lft
+NAME = push_swap
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
-	ar rc $@ $^
+%.o : %.c
+	$(CC) $(CFLAGS) -c $^ -o $@
+
+$(NAME) : $(OBJS)
+	@make -C ./libft all
+	@$(CC) $(CFLAGS) $^ -o $@ $(LIB)
 
 clean :
-	rm -f $(OBJ)
+	@make -C ./libft clean
+	rm -rf $(OBJS)
 
-fclean :
-	make clean
-	rm -f $(NAME)
+fclean : clean
+	@make -C ./libft fclean
+	rm -rf $(NAME)
 
 re :
 	make fclean
 	make all
 
-.PHONY : all claen fclaen re
+.PHONY: all clean fclean re

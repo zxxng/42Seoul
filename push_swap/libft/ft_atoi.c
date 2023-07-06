@@ -6,11 +6,11 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:20:01 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/04 14:40:22 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/06 15:45:15 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str, int *overflow)
+int	ft_atoi(const char *str, int *error)
 {
 	int			i;
 	long long	sign;
@@ -26,14 +26,14 @@ int	ft_atoi(const char *str, int *overflow)
 			sign = -sign;
 		i++;
 	}
+	if (str[i] == '\0')
+		*error = 0;
 	answer = 0;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		answer = answer * 10 + (str[i] - '0');
-		i++;
-	}
-	if ((answer * sign) > 2147483647 || (answer * sign) < -2147483648)
-		*overflow = 0;
+		answer = answer * 10 + (str[i++] - '0');
+	if ((answer * sign) > 2147483647 || (answer * sign) < -2147483648 \
+	|| str[i] == '-' || str[i] == '+')
+		*error = 0;
 	return (answer * sign);
 }
 
