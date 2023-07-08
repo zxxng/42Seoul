@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:10:47 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/06 21:51:18 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/07 00:27:00 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	check_sorted(int *arr, int len)
 	return (0);
 }
 
-int	check_duplicate(int *raw, int len)
+static int	check_duplicate(int *raw, int len)
 {
 	int	i;
 	int	j;

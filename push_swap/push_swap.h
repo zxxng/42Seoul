@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:27:23 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/07 00:16:02 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/07 00:48:39 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,16 @@ typedef struct s_deque
 	int		size;
 }	t_deque;
 
+int		error_messege(void);
+void	input_free(char **input, int len);
+void	all_free(t_deque *a, t_deque *b);
 char	*join_input(int ac, char **av);
 char	**parse_input(char *join);
-int		check_duplicate(int *raw, int len);
-int		*char_to_int(char **input, int len);
 int		check_sorted(int *arr, int len);
-
+int		*char_to_int(char **input, int len);
+int		input_length(char **input);
+void	input_to_node(int *conversion_input, t_deque *a, t_deque *b, int len);
+int		*conversion(char **original_input);
 // command
 void	push_front(t_deque *deque, t_node *new);
 void	push_rear(t_deque *deque, t_node *new);
@@ -49,13 +53,6 @@ void	rotate(t_deque *deque, char c);
 void	rotate_twice(t_deque *a, t_deque *b);
 void	reverse_rotate(t_deque *deque, char c);
 void	reverse_rotate_twice(t_deque *a, t_deque *b);
-
-// converter
-int		input_length(char **input);
-void	add_node(int data, t_deque *stack_a);
-void	input_to_node(int *conversion_input, t_deque *a, t_deque *b, int len);
-int		*conversion(char **original_input);
-
 // sort
 int		*sort_array(int *arr, int n);
 void	sandglass_start(t_deque *a, t_deque *b);

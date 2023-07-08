@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 18:36:52 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/06 17:21:29 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/07 00:47:22 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ int	input_length(char **input)
 	return (i);
 }
 
-void	add_node(int data, t_deque *stack_a)
+static void	add_node(int data, t_deque *stack_a)
 {
 	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
-		return ;
+	{
+		error_messege();
+		exit(1);
+	}
 	new_node->num = data;
 	new_node->prev = stack_a->rear;
 	if (stack_a->rear != NULL)
