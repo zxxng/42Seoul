@@ -6,60 +6,58 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:55:31 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/12 17:09:39 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/14 16:41:14 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-void	param_init(t_param *param)
+int	map_error(t_game *game)
 {
-	param->x = 3;
-	param->y = 4;
+	int	i;
+
+	i = 0;
+	while (i > game->height)
+		free(game->map[i++]);
+	free(game->map);
+	write(1, "Error: Invalid map\n", 19);
+	exit(0);
 }
 
-int	key_press(int keycode, t_param *param)
+static void	game_init(t_game *game)
 {
-	static int	a;
-
-	a = 0;
-	if (keycode == KEY_W)
-		param->y++;
-	else if (keycode == KEY_S)
-		param->y--;
-	else if (keycode == KEY_A)
-		param->x--;
-	else if (keycode == KEY_D)
-		param->x++;
-	else if (keycode == KEY_ESC)
-		exit(0);
-	printf("\nx: %d, y: %d\n", param->x, param->y);
-	return (0);
+	game->mlx = mlx_init();
+	game->win = NULL;
+	game->width = 0;
+	game->height = 0;
+	game->map = NULL;
+	game->count.player = 0;
+	game->count.exit = 0;
+	game->count.item = 0;
+	game->x = 0;
+	game->y = 0;
 }
 
 int	main(int ac, char *av[])
 {
-	void	*mlx;
-	void	*win;
-	t_param	param;
 	t_game	*game;
-	int		i;
+	int		win_wi;
+	int		win_he;
 
-	param_init(&param);
-	mlx = mlx_init();
+	if (ac != 2)
+		return (0);
 	game = malloc(sizeof(t_game));
 	if (!game)
-		return (0);
-	read_map(av[1], game);
-	i = 0;
-	while (i < game->size)
 	{
-		if (game->map[i] != '\n')
-			put_images(mlx, win, game->map[i], i, game->width);
-		i++;
+		write(1, "Error: Invalid malloc\n", 22);
+		return (0);
 	}
-	printf("read_map\n%s", game->map);
-	win = mlx_new_window(mlx, game->width * 60, game->height * 60, "so_long");
-	mlx_hook(win, X_EVENT_KEY_RELEASE, 0, &key_press, &param);
-	mlx_loop(mlx);
+	game_init(game);
+	read_map(av[1], game);
+	win_wi = game->width * 60;
+	win_he = game->height * 60;
+	game->win = mlx_new_window(game->mlx, win_wi, win_he, "jaeyyoo's so_long");
+	draw_map(game);
+	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_press, game);
+	mlx_loop(game->mlx);
 }
