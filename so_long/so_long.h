@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:54:00 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/14 16:25:27 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:39:28 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_RELEASE 3
+# define X_EVENT_KEY_EXIT 17
 
 # define KEY_ESC 53
 # define KEY_W 13
@@ -41,6 +42,7 @@ typedef struct s_game {
 	void	*win;
 	int		width;
 	int		height;
+	int		size;
 	char	**map;
 	t_count	count;
 	int		x;
@@ -52,6 +54,10 @@ int		map_error(t_game *game);
 void	read_map(char *filename, t_game *game);
 void	draw_map(t_game *game);
 
+// map check
+void	count_check(t_game *game);
+void	wall_check(t_game *game);
+
 // key_press
 int		key_press(int keycode, t_game *game);
 void	move_w(t_game *game);
@@ -59,5 +65,6 @@ void	move_s(t_game *game);
 void	move_a(t_game *game);
 void	move_d(t_game *game);
 int		exit_game(t_game *game);
+int		exit_window(t_game *game);
 
 #endif

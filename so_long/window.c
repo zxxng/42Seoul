@@ -6,13 +6,13 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:10:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/14 16:30:00 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/24 17:42:34 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	count_item(t_game *game)
+static void	count_chars(t_game *game)
 {
 	int	col;
 	int	row;
@@ -33,10 +33,11 @@ static void	count_item(t_game *game)
 				game->count.exit++;
 			else if (game->map[col][row] == 'C')
 				game->count.item++;
+			game->size++;
 		}
 	}
-	if (game->count.player != 1 || game->count.exit != 1)
-		map_error(game);
+	count_check(game);
+	wall_check(game);
 }
 
 void	read_map(char *filename, t_game *game)
@@ -46,6 +47,8 @@ void	read_map(char *filename, t_game *game)
 	char	*read_map;
 
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		exit(0);
 	read_map = NULL;
 	while (1)
 	{
@@ -59,8 +62,9 @@ void	read_map(char *filename, t_game *game)
 		free(line);
 	}
 	close(fd);
+	printf("width : %d, height : %d\n", game->width, game->height);
 	game->map = ft_split(read_map, '\n');
-	count_item(game);
+	count_chars(game);
 	free(read_map);
 }
 

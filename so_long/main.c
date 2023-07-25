@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:55:31 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/14 16:41:14 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/24 17:55:30 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	game_init(t_game *game)
 	game->win = NULL;
 	game->width = 0;
 	game->height = 0;
+	game->size = 0;
 	game->map = NULL;
 	game->count.player = 0;
 	game->count.exit = 0;
@@ -43,9 +44,14 @@ int	main(int ac, char *av[])
 	t_game	*game;
 	int		win_wi;
 	int		win_he;
+	int		file_len;
 
 	if (ac != 2)
 		return (0);
+	file_len = ft_strlen(av[1]);
+	if (file_len < 5 || ft_memcmp(av[1] + file_len - 4, ".ber", 4) != 0)
+		return (0);
+	system("leaks ./a.out");
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
@@ -59,5 +65,6 @@ int	main(int ac, char *av[])
 	game->win = mlx_new_window(game->mlx, win_wi, win_he, "jaeyyoo's so_long");
 	draw_map(game);
 	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_press, game);
+	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_window, game);
 	mlx_loop(game->mlx);
 }

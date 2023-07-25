@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:19:06 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/14 11:09:29 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 15:13:41 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	*get_next_line(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, void *src, size_t len);
 char	**ft_split(char const *s, char c);
+int		ft_memcmp(const void *s1, const void *s2, size_t num);
 
 #endif
