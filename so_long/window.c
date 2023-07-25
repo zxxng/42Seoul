@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:10:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/24 17:42:34 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/07/25 19:30:08 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	count_chars(t_game *game)
 	}
 	count_check(game);
 	wall_check(game);
+	escape_check(game);
 }
 
 void	read_map(char *filename, t_game *game)
