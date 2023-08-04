@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:23:05 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/05/31 22:53:16 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/05/31 15:57:39 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("Error : 프로그램을 종료합니다.\n");
 		exit(1);
+		return (-1);
 	}
 	pid = getpid();
 	ft_printf("PID : %d\n", pid);
