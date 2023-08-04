@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:18:41 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/05/30 11:36:27 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/05/15 23:12:05 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,27 +120,4 @@ char	*get_next_line(int fd)
 		}
 	}
 	return (res);
-}
-
-#include <stdio.h>
-#include <fcntl.h>
-
-int	main(void)
-{
-	int		fd = open("./test01.txt",O_RDONLY);
-	char	*line;
-	int		i = 1;
-
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			printf("null\n");
-			return (0);
-		}
-		printf("%d번째: %s\n",i, line);
-		i++;
-	}
-	return (0);
 }
