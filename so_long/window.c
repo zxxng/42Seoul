@@ -6,13 +6,13 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:10:55 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/25 19:30:08 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/08/04 11:34:17 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	count_chars(t_game *game)
+void	count_chars(t_game *game)
 {
 	int	col;
 	int	row;
@@ -20,6 +20,8 @@ static void	count_chars(t_game *game)
 	col = -1;
 	while (++col < game->height)
 	{
+		if ((int)ft_strlen(game->map[col]) != game->width)
+			free_map(game, "map");
 		row = -1;
 		while (++row < game->width)
 		{
@@ -36,9 +38,22 @@ static void	count_chars(t_game *game)
 			game->size++;
 		}
 	}
-	count_check(game);
-	wall_check(game);
-	escape_check(game);
+}
+
+static int	newline_check(char *map)
+{
+	int	i;
+
+	i = 0;
+	if (!map)
+		return (0);
+	while (map[i])
+	{
+		if (map[i] != '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	read_map(char *filename, t_game *game)
@@ -49,7 +64,7 @@ void	read_map(char *filename, t_game *game)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit(0);
+		free_map(game, "file");
 	read_map = NULL;
 	while (1)
 	{
@@ -63,10 +78,11 @@ void	read_map(char *filename, t_game *game)
 		free(line);
 	}
 	close(fd);
-	printf("width : %d, height : %d\n", game->width, game->height);
+	if (!newline_check(read_map))
+		free_map(game, "map");
 	game->map = ft_split(read_map, '\n');
-	count_chars(game);
 	free(read_map);
+	valid_check(game);
 }
 
 static void	put_images(t_game *game, int col, int row)
@@ -75,6 +91,7 @@ static void	put_images(t_game *game, int col, int row)
 	int		wi;
 	int		hi;
 
+	image = NULL;
 	if (game->map[col][row] == '0')
 		image = mlx_xpm_file_to_image(game->mlx, "./img/empty.xpm", &wi, &hi);
 	else if (game->map[col][row] == '1')
@@ -90,8 +107,8 @@ static void	put_images(t_game *game, int col, int row)
 
 void	draw_map(t_game *game)
 {
-	int	col;
-	int	row;
+	int		col;
+	int		row;
 
 	col = 0;
 	while (col < game->height)
@@ -104,4 +121,7 @@ void	draw_map(t_game *game)
 		}
 		col++;
 	}
+	if (game->move != 0)
+		ft_printf("move count: %d\n", game->move);
+
 }

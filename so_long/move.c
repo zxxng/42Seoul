@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 16:06:53 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/14 16:30:14 by jaeyyoo          ###   ########.fr       */
+/*   Created: 2023/07/27 19:02:52 by jaeyyoo           #+#    #+#             */
+/*   Updated: 2023/08/01 12:59:46 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	move_w(t_game *game)
 {
-	if (game->y < 1)
+	if (game->y < 1 || game->map[game->y - 1][game->x] == '1')
 		return ;
 	if (game->map[game->y - 1][game->x] == 'E')
 	{
 		if (!game->count.item)
-			exit_game(game);
+		{
+			game->move++;
+			exit_so_long(game);
+		}
 		return ;
 	}
-	if (game->map[game->y - 1][game->x] == '1')
-		return ;
+	game->move++;
 	if (game->map[game->y - 1][game->x] == 'C')
 	{
 		game->map[game->y][game->x] = '0';
@@ -41,16 +43,18 @@ void	move_w(t_game *game)
 
 void	move_s(t_game *game)
 {
-	if (game->y + 1 > game->height)
+	if (game->y + 1 > game->height || game->map[game->y + 1][game->x] == '1')
 		return ;
 	if (game->map[game->y + 1][game->x] == 'E')
 	{
 		if (!game->count.item)
-			exit_game(game);
+		{
+			game->move++;
+			exit_so_long(game);
+		}
 		return ;
 	}
-	if (game->map[game->y + 1][game->x] == '1')
-		return ;
+	game->move++;
 	if (game->map[game->y + 1][game->x] == 'C')
 	{
 		game->map[game->y][game->x] = '0';
@@ -68,16 +72,18 @@ void	move_s(t_game *game)
 
 void	move_a(t_game *game)
 {
-	if (game->x < 1)
+	if (game->x < 1 || game->map[game->y][game->x - 1] == '1')
 		return ;
 	if (game->map[game->y][game->x - 1] == 'E')
 	{
 		if (!game->count.item)
-			exit_game(game);
+		{
+			game->move++;
+			exit_so_long(game);
+		}
 		return ;
 	}
-	if (game->map[game->y][game->x - 1] == '1')
-		return ;
+	game->move++;
 	if (game->map[game->y][game->x - 1] == 'C')
 	{
 		game->map[game->y][game->x] = '0';
@@ -95,16 +101,18 @@ void	move_a(t_game *game)
 
 void	move_d(t_game *game)
 {
-	if (game->x > game->width)
+	if (game->x > game->width || game->map[game->y][game->x + 1] == '1')
 		return ;
 	if (game->map[game->y][game->x + 1] == 'E')
 	{
 		if (!game->count.item)
-			exit_game(game);
+		{
+			game->move++;
+			exit_so_long(game);
+		}
 		return ;
 	}
-	if (game->map[game->y][game->x + 1] == '1')
-		return ;
+	game->move++;
 	if (game->map[game->y][game->x + 1] == 'C')
 	{
 		game->map[game->y][game->x] = '0';

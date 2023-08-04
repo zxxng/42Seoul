@@ -6,7 +6,7 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:54:00 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/24 16:39:28 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:30:28 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # define X_EVENT_KEY_PRESS 2
-# define X_EVENT_KEY_RELEASE 3
 # define X_EVENT_KEY_EXIT 17
 
 # define KEY_ESC 53
@@ -26,10 +25,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include "./minilibx_opengl_20191021/mlx.h"
-# include "./get_next_line/get_next_line.h"
-//# include "./libft/libft.h"
+# include "lib/mlx/mlx.h"
+# include "lib/libft/get_next_line.h"
 
 typedef struct s_count {
 	int	player;
@@ -47,16 +44,27 @@ typedef struct s_game {
 	t_count	count;
 	int		x;
 	int		y;
+	int		move;
 }	t_game;
 
+typedef struct s_check {
+	t_count	count;
+	int		flag;
+	int		**visit;
+}	t_check;
+
 // main
-int		map_error(t_game *game);
+int		error_message(char *type);
+void	free_map(t_game *game, char *type);
 void	read_map(char *filename, t_game *game);
 void	draw_map(t_game *game);
 
-// map check
+// valid check
+void	valid_check(t_game *game);
+void	count_chars(t_game *game);
 void	count_check(t_game *game);
 void	wall_check(t_game *game);
+void	escape_check(t_game *game);
 
 // key_press
 int		key_press(int keycode, t_game *game);
@@ -66,5 +74,6 @@ void	move_a(t_game *game);
 void	move_d(t_game *game);
 int		exit_game(t_game *game);
 int		exit_window(t_game *game);
+void	exit_so_long(t_game *game);
 
 #endif

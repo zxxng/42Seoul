@@ -6,22 +6,48 @@
 /*   By: jaeyyoo <jaeyyoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:55:31 by jaeyyoo           #+#    #+#             */
-/*   Updated: 2023/07/24 17:55:30 by jaeyyoo          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:31:31 by jaeyyoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "so_long.h"
 
-int	map_error(t_game *game)
+void	valid_check(t_game *game)
+{
+	if (!game->map || game->width > 43 || game->height > 23)
+		free_map(game, "size");
+	count_chars(game);
+	count_check(game);
+	wall_check(game);
+	escape_check(game);
+}
+
+int	error_message(char *type)
+{
+	if (ft_memcmp(type, "argc", 4) == 0)
+		ft_printf("Error: Invalid %s\n", type);
+	else if (ft_memcmp(type, "file", 4) == 0)
+		ft_printf("Error: Invalid %s\n", type);
+	else if (ft_memcmp(type, "map", 3) == 0)
+		ft_printf("Error: Invalid %s\n", type);
+	else if (ft_memcmp(type, "size", 4) == 0)
+		ft_printf("Error: Invalid %s, this map is too big!!\n", type);
+	else if (ft_memcmp(type, "malloc", 6) == 0)
+		ft_printf("Error: Invalid %s\n", type);
+	exit(1);
+}
+
+void	free_map(t_game *game, char *type)
 {
 	int	i;
 
 	i = 0;
-	while (i > game->height)
+	while (i < game->height && game->map)
 		free(game->map[i++]);
 	free(game->map);
-	write(1, "Error: Invalid map\n", 19);
-	exit(0);
+	if (ft_memcmp(type, "game", 4) == 0)
+		return ;
+	error_message(type);
 }
 
 static void	game_init(t_game *game)
@@ -37,6 +63,7 @@ static void	game_init(t_game *game)
 	game->count.item = 0;
 	game->x = 0;
 	game->y = 0;
+	game->move = 0;
 }
 
 int	main(int ac, char *av[])
@@ -47,24 +74,20 @@ int	main(int ac, char *av[])
 	int		file_len;
 
 	if (ac != 2)
-		return (0);
+		error_message("argc");
 	file_len = ft_strlen(av[1]);
 	if (file_len < 5 || ft_memcmp(av[1] + file_len - 4, ".ber", 4) != 0)
-		return (0);
-	system("leaks ./a.out");
+		error_message("file");
 	game = malloc(sizeof(t_game));
 	if (!game)
-	{
-		write(1, "Error: Invalid malloc\n", 22);
-		return (0);
-	}
+		error_message("malloc");
 	game_init(game);
 	read_map(av[1], game);
 	win_wi = game->width * 60;
 	win_he = game->height * 60;
-	game->win = mlx_new_window(game->mlx, win_wi, win_he, "jaeyyoo's so_long");
+	game->win = mlx_new_window(game->mlx, win_wi, win_he, "./so_long");
 	draw_map(game);
-	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_press, game);
+	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, &key_press, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_window, game);
 	mlx_loop(game->mlx);
 }
